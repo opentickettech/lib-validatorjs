@@ -659,4 +659,6 @@ Validator.registerMissedRuleValidator = function(fn, message) {
   Rules.registerMissedRuleValidator(fn, message);
 };
 
+Validator.setMessages('en', { def: 'The :attribute attribute has errors.', attributes: {} });
+
 module.exports = Validator;
