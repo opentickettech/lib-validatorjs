@@ -533,7 +533,7 @@ Note: by default all _ characters will be replaced with spaces.
 
 ### Language Support
 
-Error messages are in English by default. To include another language in the browser, reference the language file in a script tag and call `Validator.useLang('lang_code')`.
+Error messages are returned as generic slugs by default. To use language-messages, reference the language file in a script tag and call `Validator.useLang('lang_code')`.
 
 ```html
 <script src="dist/validator.js"></script>

@@ -1,10 +1,9 @@
-var Messages = require('./messages');
+const Util = require('./util');
+const Messages = require('./messages');
 
-require('./lang/en');
+const require_method = require;
 
-var require_method = require;
-
-var container = {
+const container = {
 
   messages: {},
 
@@ -37,12 +36,18 @@ var container = {
   },
 
   /**
-   * Load messages (if not already loaded)
+   * Set generic slugs (default), or dynamically load messages if not already loaded
    *
    * @param  {string} lang
    * @return {void}
    */
   _load: function(lang) {
+    if (Util.isGenericLang(lang)) {
+      this._set(lang, require('./lang/slugs'));
+
+      return;
+    }
+
     if (!this.messages[lang]) {
       try {
         var rawMessages = require_method('./lang/' + lang);

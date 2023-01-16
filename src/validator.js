@@ -1,3 +1,4 @@
+var Util = require('./util');
 var Rules = require('./rules');
 var Lang = require('./lang');
 var Errors = require('./errors');
@@ -28,7 +29,7 @@ Validator.prototype = {
    *
    * @type {string}
    */
-  lang: 'slugs',
+  lang: Util.genericLang,
 
   /**
    * Numeric based rules
