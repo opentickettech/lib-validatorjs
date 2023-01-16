@@ -17,7 +17,7 @@ describe("digits rule", function() {
     const validation = new Validator({ zip: "9098a" }, { zip: "digits:5" });
 
     expect(validation.fails()).to.be.true;
-    expect(validation.errors.first("zip")).to.equal("The zip attribute has errors.");
+    expect(validation.errors.first("zip")).to.equal("validation.digits");
     expect(validation.passes()).to.be.false;
   });
 
@@ -29,7 +29,7 @@ describe("digits rule", function() {
     });
 
     expect(validation.fails()).to.be.true;
-    expect(validation.errors.first('zip')).to.equal('The zip attribute has errors.');
+    expect(validation.errors.first('zip')).to.equal('validation.digits');
     expect(validation.passes()).to.be.false;
 
     var validation = new Validator({
@@ -39,7 +39,7 @@ describe("digits rule", function() {
     });
 
     expect(validation.fails()).to.be.true;
-    expect(validation.errors.first('zip')).to.equal('The zip attribute has errors.');
+    expect(validation.errors.first('zip')).to.equal('validation.digits');
     expect(validation.passes()).to.be.false;
   });
 });

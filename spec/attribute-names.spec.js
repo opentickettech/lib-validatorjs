@@ -12,7 +12,7 @@ describe("custom attribute names", function() {
       name: "custom_name"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("name")).to.equal("validation.required");
   });
 
   it("should use custom attribute names for replacements in required_if rule", function() {
@@ -23,7 +23,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "The custom_name attribute has errors."
+      "validation.required.if"
     );
   });
 
@@ -35,7 +35,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "The custom_name attribute has errors."
+      "validation.required.unless"
     );
   });
 
@@ -46,7 +46,7 @@ describe("custom attribute names", function() {
       req: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("name")).to.equal("validation.required.with");
   });
 
   it("should use custom attribute names for replacements in required_with_all rule", function() {
@@ -58,7 +58,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "The custom_name attribute has errors."
+      "validation.required.with.all"
     );
   });
 
@@ -69,7 +69,7 @@ describe("custom attribute names", function() {
       req: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("name")).to.equal("validation.required.without");
   });
 
   it("should use custom attribute names for replacements in required_without_all rule", function() {
@@ -81,7 +81,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "The custom_name attribute has errors."
+      "validation.required.without.all"
     );
   });
 
@@ -92,7 +92,7 @@ describe("custom attribute names", function() {
     );
     validator.setAttributeNames({ date: "custom_name", other: "other_field" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("date")).to.equal("validation.after");
   });
 
   it("should use custom attribute names for replacements in before rule", function() {
@@ -102,7 +102,7 @@ describe("custom attribute names", function() {
     );
     validator.setAttributeNames({ date: "custom_name", other: "other_field" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("date")).to.equal("validation.before");
   });
 
   it("should use custom attribute names for replacements in after_or_equal rule", function() {
@@ -112,7 +112,7 @@ describe("custom attribute names", function() {
     );
     validator.setAttributeNames({ date: "custom_name", other: "other_field" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("date")).to.equal("validation.after.or.equal");
   });
 
   it("should use custom attribute names for replacements in before_or_equal rule", function() {
@@ -125,13 +125,13 @@ describe("custom attribute names", function() {
       other: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("date")).to.equal("validation.before.or.equal");
   });
 
   it("should use custom attribute names for replacements in same rule", function() {
     const validator = new Validator({ name: "name", other: "other" }, { name: "same:other" });
     validator.setAttributeNames({ name: "custom_name", other: "other_field" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("The custom_name attribute has errors.");
+    expect(validator.errors.first("name")).to.equal("validation.same");
   });
 });

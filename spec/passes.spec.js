@@ -13,7 +13,7 @@ describe("passes()", function() {
     validator.passes();
 
     expect(validator.errors.all()).to.eql({
-      login: ["The login attribute has errors."]
+      login: ["validation.required"]
     });
   });
 

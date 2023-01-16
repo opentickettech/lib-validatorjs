@@ -16,6 +16,6 @@ describe("string validation rule", function() {
     const validator = new Validator({ name: 5 }, { name: "string" });
 
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("name")).to.equal("The name attribute has errors.");
+    expect(validator.errors.first("name")).to.equal("validation.string");
   });
 });

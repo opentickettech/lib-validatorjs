@@ -98,7 +98,7 @@ describe("Validator custom messages", function() {
     expect(validator.errors.get("name").length).to.equal(1);
     expect(validator.errors.first("name")).to.equal("Name is missing.");
     expect(validator.errors.get("email").length).to.equal(1);
-    expect(validator.errors.first("email")).to.equal("The email attribute has errors.");
+    expect(validator.errors.first("email")).to.equal("validation.required");
   });
 
   it("can be specified for custom validators", function() {

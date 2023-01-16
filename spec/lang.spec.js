@@ -7,7 +7,7 @@ const { Validator, expect } = require("./setup.js");
 
 describe("lang / messages", function() {
   it("should default to english", function() {
-    expect(Validator.getDefaultLang()).to.equal("en");
+    expect(Validator.getDefaultLang()).to.equal("slugs");
   });
 
   it("should be able to change lang", function() {

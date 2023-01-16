@@ -31,7 +31,7 @@ describe("stopOnError tests", function() {
     const validator = new Validator({ email1: "x", email2: "x" }, { email1: "min:5|email", email2: "min:5|email" });
     validator.stopOnError(["email2"]);
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.get("email1")).to.have.length(1); // @todo
+    expect(validator.errors.get("email1")).to.have.length(2);
     expect(validator.errors.get("email2")).to.have.length(1);
   });
 

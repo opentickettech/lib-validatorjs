@@ -36,30 +36,30 @@ describe("nested validation rules", function() {
     [
       {},
       {
-        name: "The name attribute has errors.",
-        "data.weight": "The data.weight attribute has errors.",
-        "data.hair.color": "The data.hair.color attribute has errors."
+        name: "validation.required",
+        "data.weight": "validation.required",
+        "data.hair.color": "validation.required"
       }
     ],
     [
       { name: "David" },
       {
-        "data.weight": "The data.weight attribute has errors.",
-        "data.hair.color": "The data.hair.color attribute has errors."
+        "data.weight": "validation.required",
+        "data.hair.color": "validation.required"
       }
     ],
     [
       { data: { weight: 70 } },
       {
-        name: "The name attribute has errors.",
-        "data.hair.color": "The data.hair.color attribute has errors."
+        name: "validation.required",
+        "data.hair.color": "validation.required"
       }
     ],
     [
       { data: { hair: { color: "black" } } },
       {
-        name: "The name attribute has errors.",
-        "data.weight": "The data.weight attribute has errors."
+        name: "validation.required",
+        "data.weight": "validation.required"
       }
     ]
   ];

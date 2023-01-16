@@ -10,7 +10,7 @@ describe("attribute formatter tests", function() {
     const validator = new Validator({ "all_users[3][first_name]": "" }, { "all_users[3][first_name]": "required" });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("all_users[3][first_name]")).to.equal(
-      "The all users 3 first name attribute has errors."
+        "validation.required"
     );
   });
 
@@ -21,7 +21,7 @@ describe("attribute formatter tests", function() {
     });
     const validator = new Validator({ first_name: "" }, { first_name: "required" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("first_name")).to.equal("The first name attribute has errors.");
+    expect(validator.errors.first("first_name")).to.equal("validation.required");
     Validator.setAttributeFormatter(originalAttributeFormatter);
   });
 
@@ -31,6 +31,6 @@ describe("attribute formatter tests", function() {
       return attribute;
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("first_name")).to.equal("The first_name attribute has errors.");
+    expect(validator.errors.first("first_name")).to.equal("validation.required");
   });
 });

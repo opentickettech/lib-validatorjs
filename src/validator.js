@@ -28,7 +28,7 @@ Validator.prototype = {
    *
    * @type {string}
    */
-  lang: 'en',
+  lang: 'slugs',
 
   /**
    * Numeric based rules
@@ -659,6 +659,6 @@ Validator.registerMissedRuleValidator = function(fn, message) {
   Rules.registerMissedRuleValidator(fn, message);
 };
 
-Validator.setMessages('en', { def: 'The :attribute attribute has errors.', attributes: {} });
+// Validator.setMessages('slugs', { def: 'The :attribute attribute has errors.', attributes: {} });
 
 module.exports = Validator;

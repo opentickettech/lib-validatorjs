@@ -10,7 +10,7 @@ describe("required unless", function() {
     const validator = new Validator({ desert: "icecream", flavour: "" }, { flavour: "required_unless:desert,cake" });
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("flavour")).to.equal("The flavour attribute has errors.");
+    expect(validator.errors.first("flavour")).to.equal("validation.required.unless");
   });
 
   it("should pass", function() {

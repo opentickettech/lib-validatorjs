@@ -18,7 +18,7 @@ describe("required without all", function() {
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
     expect(validator.errors.first("flavour")).to.equal(
-      "The flavour attribute has errors."
+      "validation.required.without.all"
     );
   });
 

@@ -16,7 +16,7 @@ describe("confirmed validation rule", function() {
     const validator = new Validator({ password: "abc", password_confirmation: "abcd" }, { password: "confirmed" });
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("password")).to.equal("The password attribute has errors.");
+    expect(validator.errors.first("password")).to.equal("validation.confirmed");
   });
 
   it("should pass with a matching confirmation field for the field under validation", function() {

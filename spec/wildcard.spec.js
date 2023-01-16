@@ -115,7 +115,7 @@ describe("Wildcard", function() {
       expect(validator.passes()).to.be.false;
       expect(validator.errors.all()).to.eql({
         "users.0.age": ["Required"],
-        "users.0.lastName": ["The users.0.lastName attribute has errors."]
+        "users.0.lastName": ["validation.required.with"]
       });
     });
   });

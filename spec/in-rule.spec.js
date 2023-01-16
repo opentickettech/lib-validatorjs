@@ -10,7 +10,7 @@ describe("in validation rule", function() {
     const validator = new Validator({ state: "fakeState" }, { state: "in:CA,TX,FL" });
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("state")).to.equal("The state attribute has errors.");
+    expect(validator.errors.first("state")).to.equal("validation.in");
   });
 
   it("should pass when the value is in the set of comma separated values", function() {
@@ -35,7 +35,7 @@ describe("in validation rule", function() {
     const validator = new Validator({ quantity: 10 }, { quantity: "in:0,1,2" });
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("quantity")).to.equal("The quantity attribute has errors.");
+    expect(validator.errors.first("quantity")).to.equal("validation.in");
   });
 
   it("should pass when the value is in the set of comma separated values", function() {

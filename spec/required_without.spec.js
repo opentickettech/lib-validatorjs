@@ -20,7 +20,7 @@ describe("required without", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("flavour")).to.equal("The flavour attribute has errors.");
+    expect(validator.errors.first("flavour")).to.equal("validation.required.without");
   });
 
   it("should pass", function() {
