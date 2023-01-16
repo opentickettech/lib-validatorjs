@@ -59,9 +59,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "test:unit": "vitest run",
-    "test:unit:watch": "vitest watch",
-    "_test:node": "node node_modules/mocha/bin/mocha spec --slow 500 --reporter mocha-better-spec-reporter",
-    "_test:watch": "node node_modules/mocha/bin/mocha --watch spec --slow 500 --reporter mocha-better-spec-reporter",
-    "_test:browser": "npm run build:all && node node_modules/karma/bin/karma start --single-run"
+    "test:unit:watch": "vitest watch"
   }
 }
