@@ -1,7 +1,7 @@
 {
   "name": "@openticket/lib-validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
-  "version": "3.22.1",
+  "version": "3.22.2",
   "author": "David <david@thejsguy.com>",
   "contributors": [
     {
@@ -23,6 +23,7 @@
   ],
   "license": "MIT",
   "main": "./lib/ot-validatorjs.js",
+  "module": "./lib/ot-validatorjs.umd.cjs",
   "types": "./src/validator.ts",
   "repository": {
     "type": "git",
@@ -45,43 +46,22 @@
   ],
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "browserify": "^13.0.1",
-    "chai": "~3.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@vitest/coverage-c8": "^0.27.1",
     "eslint": "5.8.0",
-    "grunt": "1.0.4",
-    "grunt-browserify": "^5.0.0",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-concat": "~1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
-    "jit-grunt": "^0.10.0",
-    "karma": "4.3.0",
-    "karma-browserify": "6.1.0",
-    "karma-chai": "~0.1.0",
-    "karma-chrome-launcher": "3.1.0",
-    "karma-coverage": "~1.0.0",
-    "karma-growl-notifications-reporter": "0.0.2",
-    "karma-mocha": "1.3.0",
-    "karma-mocha-reporter": "2.2.5",
-    "mocha": "~2.5.3",
-    "mocha-better-spec-reporter": "github:mikeerickson/mocha-better-spec-reporter",
-    "pump": "3.0.0",
-    "puppeteer": "1.19.0",
-    "rimraf": "3.0.0",
-    "vite": "^4.0.4"
+    "eslint-plugin-import": "^2.27.4",
+    "jsdom": "^21.0.0",
+    "vite": "^4.0.4",
+    "vitest": "^0.27.1"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "_pre-commit": "npm run lint:spec && npm run lint && npm run test",
-    "_build:all": "./scripts/build.sh",
-    "_build": "rimraf dist && grunt dist",
-    "_lint": "eslint \"./src/**/*.js\" --fix",
-    "_lint:spec": "eslint \"./spec/**/*.js\" --rule 'no-redeclare: off'",
-    "_lint:fix": "eslint \"./src/**/*.js\" --fix",
+    "lint": "eslint .",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest watch",
     "_test:node": "node node_modules/mocha/bin/mocha spec --slow 500 --reporter mocha-better-spec-reporter",
     "_test:watch": "node node_modules/mocha/bin/mocha --watch spec --slow 500 --reporter mocha-better-spec-reporter",
-    "_test:browser": "npm run build:all && node node_modules/karma/bin/karma start --single-run",
-    "_test": "npm run test:node",
-    "_todo": "node scripts/todo.js"
+    "_test:browser": "npm run build:all && node node_modules/karma/bin/karma start --single-run"
   }
 }

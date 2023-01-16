@@ -1,12 +1,50 @@
-.DS_Store
-.idea/
-.npm-debug.log
-.vscode/
-coverage/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+/stats.html
+
+# Node/yarn artifact files
 node_modules/
-NOTES.md
-npm-debug.log
-RELEASE.md
-sandbox/
-spec/checklist.md
+dist/
 lib/
+dist-ssr/
+/docs/
+
+# Common artifacts
+# - Compiled Java class files
+# - Compiled Python bytecode
+# - Package files
+# - Maven
+*.class
+*.py[cod]
+*.jar
+target/
+
+# Environment files
+.env
+*.local
+
+# Editor and OS directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test reports
+TEST*.xml
+junit*.xml
+/coverage/
+/junit/
+
+# Specific files

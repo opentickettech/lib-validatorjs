@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
 
-export default defineConfig({
+export default defineConfig(() => ({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/validator.js'),
@@ -22,4 +22,30 @@ export default defineConfig({
             include: [/src/],
         },
     },
-});
+    test: {
+        coverage: {
+            enabled: true,
+            reporter: [ 'text', 'json-summary', 'html' ],
+            exclude: [ '**/spec/**/*.js' ],
+            skipFull: true,
+        },
+        environment: 'jsdom',
+        exclude: [
+            '**/node_modules/**',
+            // **/lib/** should be resolved, as it is part of the working directory of Jenkins.....
+            resolve('**/lib/**'),
+            '**/dist/**',
+            '**/cypress/**',
+            '**/.{idea,git,cache,output,temp}/**',
+            '**/package/**',
+            '**/*.helper.spec.ts',
+        ],
+        outputFile: {
+            junit: 'junit/unit.xml',
+        },
+        reporters: [
+            'default',
+            'junit',
+        ],
+    },
+}));
