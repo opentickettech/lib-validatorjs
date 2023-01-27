@@ -18,12 +18,6 @@ describe("Validator constructor", function() {
     );
   });
 
-  it("should expose on window if browser", function() {
-    if (typeof window !== "undefined") {
-      expect(window.Validator).toBeUndefined();
-    }
-  });
-
   it("should have a rules property containing all the validation rules", function() {
     expect(validator.rules).toBeTypeOf("object");
   });

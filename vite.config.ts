@@ -32,7 +32,6 @@ export default defineConfig(() => ({
         environment: 'jsdom',
         exclude: [
             '**/node_modules/**',
-            // **/lib/** should be resolved, as it is part of the working directory of Jenkins.....
             resolve('**/lib/**'),
             '**/dist/**',
             '**/cypress/**',
