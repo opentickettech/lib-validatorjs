@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("require validation pass rules", function() {
   it("should pass with non-empty strings", function() {

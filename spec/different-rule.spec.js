@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("different validation rule", function() {
   it("should fail when the 2 attributes are the same", function() {

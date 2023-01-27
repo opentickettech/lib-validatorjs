@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("Validator custom messages", function() {
   it("override the default message for the validator", function() {

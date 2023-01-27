@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("present validation rule", function() {
   it("should pass with attribute present", function() {

@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("regex validation rule for most common regular expressions", function() {
   it("should pass with the currency pattern: 12,500.00", function() {

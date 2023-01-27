@@ -2,9 +2,10 @@ import {
   beforeEach,
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("Validator constructor", function() {
   var validator;

@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("max validation rule", function() {
   it('should fail with the name "David". Maximum size is 3 letters.', function() {

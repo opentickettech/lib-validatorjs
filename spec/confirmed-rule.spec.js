@@ -1,9 +1,10 @@
 import {
   describe,
   it,
+  expect,
 } from 'vitest';
 
-const { Validator, expect } = require("./setup.js");
+const { Validator } = require("./setup.js");
 
 describe("confirmed validation rule", function() {
   it("should fail without a matching confirmation field for the field under validation", function() {
