@@ -22,6 +22,7 @@
     }
   ],
   "license": "MIT",
+  "files": ["src/", "lib/"],
   "main": "./lib/ot-validatorjs.js",
   "types": "./src/validator.js",
   "repository": {
