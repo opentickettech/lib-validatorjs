@@ -1,3 +1,12 @@
+> ## About this fork
+> During the use of the original package we encountered unfixed bugs; behavioral quirks and use-cases we would like to 
+> align while integrating it in our OpenTicket ecosystem. Forking-and-tweaking it seemed the right thing to do.
+>
+> To give an overview on our main changes:
+> * We fixed some minor bugs on date-related rules
+> * We integrated Vite & Vitest, and aligned all existing tests
+> * We replaced the original default EN-lang with a generic slug-based approach 
+
 # validatorjs
 
 The validatorjs library makes data validation in JavaScript very easy in both the browser and Node.js.
@@ -533,7 +542,7 @@ Note: by default all _ characters will be replaced with spaces.
 
 ### Language Support
 
-Error messages are in English by default. To include another language in the browser, reference the language file in a script tag and call `Validator.useLang('lang_code')`.
+Error messages are returned as generic slugs by default. To use language-messages, reference the language file in a script tag and call `Validator.useLang('lang_code')`.
 
 ```html
 <script src="dist/validator.js"></script>

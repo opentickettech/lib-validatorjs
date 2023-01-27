@@ -5,19 +5,20 @@ function leapYear(year) {
 }
 
 function checkFalsePositiveDates(dateString = '') {
-
   if (dateString.length === 10) {
 
     // massage input to use yyyy-mm-dd format
     // we support yyyy/mm/dd or yyyy.mm.dd
-    let normalizedDate = dateString.replace('.', '-').replace('/', '-');
-    let parts = normalizedDate.split('-');
+    const normalizedDate = dateString.replace('.', '-').replace('/', '-');
+    const parts = normalizedDate.split('-');
+
     if (parts.length === 3) {
       if (parts[0].length === 4) {
         // yyyy-mm-dd format
-        let y = parseInt(parts[0]);
-        let m = parseInt(parts[1]);
-        let d = parseInt(parts[2]);
+        const y = parseInt(parts[0], 10);
+        const m = parseInt(parts[1], 10);
+        const d = parseInt(parts[2], 10);
+
         if (m === 2) {
           // return leapYear(y) ? d <= 29 : d <= 28;
           if (leapYear(y)) {
@@ -30,6 +31,7 @@ function checkFalsePositiveDates(dateString = '') {
             }
           }
         }
+
         if (m === 4 || m === 6 || m === 9 || m === 11) {
           if (d > 30) {
             return false;
@@ -37,20 +39,28 @@ function checkFalsePositiveDates(dateString = '') {
         }
       }
     }
-    return true; // we are not in feburary, proceed
+
+    return true; // we are not in february, proceed
   }
+
   return true; // we are not testing formatted date, proceed to rest of validation
 }
 
 function isValidDate(dateString) {
   let testDate;
+
   if (typeof dateString === 'number') {
     testDate = new Date(dateString);
     if (typeof testDate === 'object') {
       return true;
     }
+
+    dateString = `${dateString}`;
+  } else if (typeof dateString === 'boolean') {
+    return false;
   }
-  // first convert incoming string to date object and see if it correct date and format
+
+  // first convert incoming string to date object and see if it corrects date and format
   testDate = new Date(dateString);
   if (typeof testDate === 'object') {
     if (testDate.toString() === 'Invalid Date') {
@@ -60,9 +70,9 @@ function isValidDate(dateString) {
     /**
      * Check for false positive dates
      * perform special check on february as JS `new Date` incorrectly returns valid date
-     * Eg.  let newDate = new Date('2020-02-29')  // returns as March 02 2020
-     * Eg.  let newDate = new Date('2019-02-29')  // returns as March 01 2020
-     * Eg.  let newDate = new Date('2019-04-31')  // returns as April 30 2020
+     * E.g.  let newDate = new Date('2020-02-29')  // returns as March 02, 2020.
+     * E.g.  let newDate = new Date('2019-02-29')  // returns as March 01, 2020.
+     * E.g.  let newDate = new Date('2019-04-31')  // returns as April 30, 2020.
      */
     if (!checkFalsePositiveDates(dateString)) {
       return false;
@@ -73,27 +83,27 @@ function isValidDate(dateString) {
   }
 
   // First check for the pattern
-  var regex_date = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+  const regex_date = /^\d{4}-\d{1,2}-\d{1,2}$/;
 
   if (!regex_date.test(dateString)) {
     return false;
   }
 
   // Parse the date parts to integers
-  var parts = dateString.split("-");
-  var day = parseInt(parts[2], 10);
-  var month = parseInt(parts[1], 10);
-  var year = parseInt(parts[0], 10);
+  const parts = dateString.split('-');
+  const day = parseInt(parts[2], 10);
+  const month = parseInt(parts[1], 10);
+  const year = parseInt(parts[0], 10);
 
   // Check the ranges of month and year
-  if (year < 1000 || year > 3000 || month == 0 || month > 12) {
+  if (year < 1000 || year > 3000 || month === 0 || month > 12) {
     return false;
   }
 
-  var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
   // Adjust for leap years
-  if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
+  if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) {
     monthLength[1] = 29;
   }
 
@@ -414,75 +424,75 @@ var rules = {
   },
 
   after: function (val, req) {
-    var val1 = this.validator.input[req];
-    var val2 = val;
+    let val1 = req;
+
+    if (!isValidDate(val)) {
+      return false;
+    }
 
     if (!isValidDate(val1)) {
-      return false;
-    }
-    if (!isValidDate(val2)) {
-      return false;
+      val1 = this.validator.input[val1];
+
+      if (!isValidDate(val1)) {
+        return false;
+      }
     }
 
-    if (new Date(val1).getTime() < new Date(val2).getTime()) {
-      return true;
-    }
-
-    return false;
+    return new Date(val1).getTime() < new Date(val).getTime();
   },
 
   after_or_equal: function (val, req) {
-    var val1 = this.validator.input[req];
-    var val2 = val;
+    let val1 = req;
+
+    if (!isValidDate(val)) {
+      return false;
+    }
 
     if (!isValidDate(val1)) {
-      return false;
-    }
-    if (!isValidDate(val2)) {
-      return false;
+      val1 = this.validator.input[val1];
+
+      if (!isValidDate(val1)) {
+        return false;
+      }
     }
 
-    if (new Date(val1).getTime() <= new Date(val2).getTime()) {
-      return true;
-    }
-
-    return false;
+    return new Date(val1).getTime() <= new Date(val).getTime();
   },
 
   before: function (val, req) {
-    var val1 = this.validator.input[req];
-    var val2 = val;
+    let val1 = req;
+
+    if (!isValidDate(val)) {
+      return false;
+    }
 
     if (!isValidDate(val1)) {
-      return false;
-    }
-    if (!isValidDate(val2)) {
-      return false;
+      val1 = this.validator.input[val1];
+
+      if (!isValidDate(val1)) {
+        return false;
+      }
     }
 
-    if (new Date(val1).getTime() > new Date(val2).getTime()) {
-      return true;
-    }
-
-    return false;
+    return new Date(val1).getTime() > new Date(val).getTime();
   },
 
   before_or_equal: function (val, req) {
-    var val1 = this.validator.input[req];
-    var val2 = val;
+    let val1 = req;
+
+    if (!isValidDate(val)) {
+      return false;
+    }
 
     if (!isValidDate(val1)) {
-      return false;
-    }
-    if (!isValidDate(val2)) {
-      return false;
+      val1 = this.validator.input[val1];
+
+      if (!isValidDate(val1)) {
+        return false;
+      }
     }
 
-    if (new Date(val1).getTime() >= new Date(val2).getTime()) {
-      return true;
-    }
-
-    return false;
+    return new Date(val1).getTime() >= new Date(val).getTime();
   },
 
   hex: function (val) {
