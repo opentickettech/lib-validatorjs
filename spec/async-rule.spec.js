@@ -31,33 +31,32 @@ describe("async rule tests", function() {
     validator.passes(done);
   }));
 
-  // @todo
-  it.skip("should be able to fail async rules", new Promise(done => {
+
+  it("should be able to fail async rules", () => new Promise(done => {
     Validator.registerAsync(
-      "username",
-      function(desiredUsername, ruleValue, attribute, passes) {
-        setTimeout(function() {
-          if (desiredUsername == "test") {
-            passes(false);
-          }
-        }, 50);
-      },
-      ":attribute is an invalid username"
+        "username",
+        function(desiredUsername, ruleValue, attribute, passes) {
+          setTimeout(function() {
+            if (desiredUsername == "test") {
+              passes(false);
+            }
+          }, 50);
+        },
+        ":attribute is an invalid username"
     );
 
     var validator = new Validator(
-      {
-        username: "test"
-      },
-      {
-        username: "username"
-      }
+        {
+          username: "test"
+        },
+        {
+          username: "username"
+        }
     );
     validator.fails(done);
   }));
 
-  // @todo
-  it.skip("should pass on multiple async rules", new Promise(done => {
+  it("should pass on multiple async rules", () => new Promise(done => {
     var passCount = 0;
 
     Validator.registerAsync(
@@ -100,8 +99,7 @@ describe("async rule tests", function() {
     });
   }));
 
-  // @todo
-  it.skip("should fail on mixture of pass/fail async rules", new Promise(done => {
+  it("should fail on mixture of pass/fail async rules", () => new Promise(done => {
     var failedCount = 0;
     var passCount = 0;
 
@@ -146,8 +144,7 @@ describe("async rule tests", function() {
     });
   }));
 
-  // @todo
-  it.skip("should allow custom error message", new Promise(done => {
+  it("should allow custom error message", () => new Promise(done => {
     Validator.registerAsync(
       "username",
       function(desiredUsername, ruleValue, attribute, passes) {
@@ -174,8 +171,7 @@ describe("async rule tests", function() {
     });
   }));
 
-  // @todo
-  it.skip("should allow validating by async when no async rules", new Promise(done => {
+  it("should allow validating by async when no async rules", () => new Promise(done => {
     var validator = new Validator(
       {
         username: "admin",
@@ -195,8 +191,7 @@ describe("async rule tests", function() {
     });
   }));
 
-  // @todo
-  it.skip("should it pass on mixture of sync/async rules", new Promise(done => {
+  it("should it pass on mixture of sync/async rules", () => new Promise(done => {
     Validator.registerAsync(
       "username",
       function(desiredUsername, ruleValue, attribute, passes) {
@@ -220,8 +215,7 @@ describe("async rule tests", function() {
     validator.passes(done);
   }));
 
-  // @todo
-  it.skip("should it not call passes if using just fails callback", new Promise(done => {
+  it("should it not call passes if using just fails callback", () => new Promise(done => {
     var validator = new Validator(
       {
         name: "gary"
@@ -239,8 +233,7 @@ describe("async rule tests", function() {
     });
   }));
 
-  // @todo
-  it.skip("should it not call fails if using just passes callback", new Promise(done => {
+  it("should it not call fails if using just passes callback", () => new Promise(done => {
     var validator = new Validator(
       {
         name: ""

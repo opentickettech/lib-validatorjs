@@ -7,12 +7,11 @@ import {
 const { Validator } = require("./setup.js");
 
 describe("alpha_num validation rule", function() {
-  // @todo
-  it.skip("should fail with non-alphanumeric characters", function() {
+  it("should fail with non-alphanumeric characters", function() {
     const validator = new Validator({ age: "$" }, { age: "alpha_num" });
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("age")).to.equal("The age field must be alphanumeric.");
+    expect(validator.errors.first("age")).to.equal("validation.alpha.num");
   });
 
   it("should pass with only alphanumeric characters", function() {
