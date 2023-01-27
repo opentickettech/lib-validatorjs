@@ -12,7 +12,7 @@ describe("before or equal rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.before.or.equal");
+    expect(validator.errors.first("date2")).to.equal("validation.before_or_equal");
   });
 
   it("should pass when the comparing attribute are equal", function() {

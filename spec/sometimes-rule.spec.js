@@ -20,8 +20,7 @@ describe("sometimes validation pass rules", function() {
     expect(validator.passes()).to.be.true;
   });
 
-  // @todo
-  it.skip("should be able to register and pass async rule when the property is passed with data", new Promise(done => {
+  it("should be able to register and pass async rule when the property is passed with data", () => new Promise(done => {
     Validator.registerAsync(
       "username",
       function(desiredUsername, ruleValue, attribute, passes) {
@@ -41,8 +40,7 @@ describe("sometimes validation pass rules", function() {
     validator.passes(done);
   }));
 
-  // @todo
-  it.skip("should be able to register and pass async rule when the property is not passed with data", new Promise(done => {
+  it("should be able to register and pass async rule when the property is not passed with data", () => new Promise(done => {
     Validator.registerAsync(
       "username",
       function(desiredUsername, ruleValue, attribute, passes) {

@@ -113,7 +113,7 @@ describe("custom attribute names", function() {
     );
     validator.setAttributeNames({ date: "custom_name", other: "other_field" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("validation.after.or.equal");
+    expect(validator.errors.first("date")).to.equal("validation.after_or_equal");
   });
 
   it("should use custom attribute names for replacements in before_or_equal rule", function() {
@@ -126,7 +126,7 @@ describe("custom attribute names", function() {
       other: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("date")).to.equal("validation.before.or.equal");
+    expect(validator.errors.first("date")).to.equal("validation.before_or_equal");
   });
 
   it("should use custom attribute names for replacements in same rule", function() {

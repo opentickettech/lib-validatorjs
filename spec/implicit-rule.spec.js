@@ -38,8 +38,7 @@ describe("implicit rule tests", function() {
     expect(validator.passes()).to.be.true;
   });
 
-  // @todo
-  it.skip("should fail async implicit rule even when undefined", new Promise(done => {
+  it("should fail async implicit rule even when undefined", () => new Promise(done => {
     Validator.registerAsyncImplicit(
       "async_null",
       function(value, attribute, req, passes) {
@@ -63,8 +62,7 @@ describe("implicit rule tests", function() {
     validator.fails(done);
   }));
 
-  // @todo
-  it.skip("should pass async implicit rule even when null", new Promise(done => {
+  it("should pass async implicit rule even when null", () => new Promise(done => {
     Validator.registerAsyncImplicit(
       "async_null",
       function(value, attribute, req, passes) {

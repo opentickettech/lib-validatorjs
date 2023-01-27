@@ -79,7 +79,7 @@ describe("Error messages", function() {
       const validator = new Validator({ name: "David *" }, { name: "alpha_dash" });
       expect(validator.passes()).to.be.false;
       expect(validator.errors.first("name")).to.equal(
-        "validation.alpha.dash"
+        "validation.alpha_dash"
       );
     });
 
