@@ -1,3 +1,12 @@
+> ### About this fork
+> During the use of the original package we encountered unfixed bugs; behavioral quirks and use-cases we would like to 
+> align while integrating it in our OpenTicket ecosystem. Forking-and-tweaking it seemed the right thing to do.
+>
+> To give a general overview on our main changes:
+> * We fixed some minor bugs on date-related rules
+> * We integrated Vite & Vitest, and aligned all existing tests
+> * We replaced the original default EN-lang with a more generic-slug-based approach 
+
 # validatorjs
 
 The validatorjs library makes data validation in JavaScript very easy in both the browser and Node.js.
