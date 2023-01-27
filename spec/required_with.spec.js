@@ -19,7 +19,7 @@ describe("required with", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("flavour")).to.equal("validation.required.with");
+    expect(validator.errors.first("flavour")).to.equal("validation.required_with");
   });
 
   it("should pass", function() {

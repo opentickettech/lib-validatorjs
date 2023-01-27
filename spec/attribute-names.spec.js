@@ -24,7 +24,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "validation.required.if"
+      "validation.required_if"
     );
   });
 
@@ -36,7 +36,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "validation.required.unless"
+      "validation.required_unless"
     );
   });
 
@@ -47,7 +47,7 @@ describe("custom attribute names", function() {
       req: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("validation.required.with");
+    expect(validator.errors.first("name")).to.equal("validation.required_with");
   });
 
   it("should use custom attribute names for replacements in required_with_all rule", function() {
@@ -59,7 +59,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "validation.required.with.all"
+      "validation.required_with_all"
     );
   });
 
@@ -70,7 +70,7 @@ describe("custom attribute names", function() {
       req: "other_field"
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("validation.required.without");
+    expect(validator.errors.first("name")).to.equal("validation.required_without");
   });
 
   it("should use custom attribute names for replacements in required_without_all rule", function() {
@@ -82,7 +82,7 @@ describe("custom attribute names", function() {
     });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("name")).to.equal(
-      "validation.required.without.all"
+      "validation.required_without_all"
     );
   });
 
