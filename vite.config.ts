@@ -7,7 +7,6 @@ export default defineConfig(() => ({
             entry: resolve(__dirname, 'src/validator.js'),
             name: 'OtValidatorJs',
             fileName: 'ot-validatorjs',
-            formats: ['cjs']
         },
         outDir: 'lib',
         rollupOptions: {
@@ -18,9 +17,6 @@ export default defineConfig(() => ({
         sourcemap: true,
         target: 'es2020',
         minify: false,
-        commonjsOptions: {
-            include: [/src/],
-        },
     },
     test: {
         coverage: {
