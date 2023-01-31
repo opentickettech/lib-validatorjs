@@ -4,7 +4,7 @@ import { resolve } from 'path';
 export default defineConfig(() => ({
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/validator.js'),
+            entry: resolve(__dirname, 'src/validator.cjs'),
             name: 'OtValidatorJs',
             fileName: 'ot-validatorjs',
         },
