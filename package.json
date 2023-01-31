@@ -2,7 +2,7 @@
   "name": "@openticket/lib-validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
   "version": "4.0.2",
-  "author": "David <david@thejsguy.com>",
+  "author": "OpenTicket <dev@openticket.tech>",
   "contributors": [
     {
       "name": "Mike Erickson",
@@ -26,8 +26,10 @@
     "src/",
     "lib/"
   ],
-  "main": "./lib/ot-validatorjs.js",
-  "types": "./src/validator.js",
+  "type": "module",
+  "main": "./lib/ot-validatorjs.umd.cjs",
+  "module": "./lib/ot-validatorjs.js",
+  "types": "./src/types.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/opentickettech/openticket-lib-validatorjs"
