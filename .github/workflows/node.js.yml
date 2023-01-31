@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up node ⚙️
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.13.1
+        cache: 'yarn'
+
+    - name: Install dependencies 📦
+      run: yarn install --ignore-scripts --frozen-lockfile
+
+    - name: Build assets 🛠
+      run: yarn build
+
+    - name: Lint 🎗
+      run: yarn lint
+
+    - name: Test 🧪
+      run: yarn test:unit
