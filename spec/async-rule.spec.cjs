@@ -34,24 +34,24 @@ describe("async rule tests", function() {
 
   it("should be able to fail async rules", () => new Promise(done => {
     Validator.registerAsync(
-        "username",
-        function(desiredUsername, ruleValue, attribute, passes) {
-          setTimeout(function() {
-            if (desiredUsername == "test") {
-              passes(false);
-            }
-          }, 50);
-        },
-        ":attribute is an invalid username"
+      "username",
+      function(desiredUsername, ruleValue, attribute, passes) {
+        setTimeout(function() {
+          if (desiredUsername == "test") {
+            passes(false);
+          }
+        }, 50);
+      },
+      ":attribute is an invalid username"
     );
 
     var validator = new Validator(
-        {
-          username: "test"
-        },
-        {
-          username: "username"
-        }
+      {
+        username: "test"
+      },
+      {
+        username: "username"
+      }
     );
     validator.fails(done);
   }));

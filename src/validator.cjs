@@ -354,7 +354,7 @@ Validator.prototype = {
    * @return {boolean}
    */
   _suppliedWithData: function (attribute) {
-    return this.input.hasOwnProperty(attribute);
+    return Object.prototype.hasOwnProperty.call(this.input, attribute);
   },
 
   /**

@@ -3,6 +3,7 @@ var Errors = function() {
 };
 
 Errors.prototype = {
+
   constructor: Errors,
 
   /**
@@ -66,7 +67,7 @@ Errors.prototype = {
    * @return {boolean}
    */
   has: function(attribute) {
-    if (this.errors.hasOwnProperty(attribute)) {
+    if (Object.prototype.hasOwnProperty.call(this.errors, attribute)) {
       return true;
     }
 

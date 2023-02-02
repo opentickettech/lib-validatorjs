@@ -47,9 +47,9 @@ Messages.prototype = {
    */
   _getAttributeName: function(attribute) {
     var name = attribute;
-    if (this.attributeNames.hasOwnProperty(attribute)) {
+    if (Object.prototype.hasOwnProperty.call(this.attributeNames, attribute)) {
       return this.attributeNames[attribute];
-    } else if (this.messages.attributes.hasOwnProperty(attribute)) {
+    } else if (Object.prototype.hasOwnProperty.call(this.messages.attributes, attribute)) {
       name = this.messages.attributes[attribute];
     }
 
@@ -106,10 +106,10 @@ Messages.prototype = {
 
     for (var i = 0, format; i < formats.length; i++) {
       format = formats[i];
-      if (customMessages.hasOwnProperty(format)) {
+      if (Object.prototype.hasOwnProperty.call(customMessages, format)) {
         template = customMessages[format];
         break;
-      } else if (messages.hasOwnProperty(format)) {
+      } else if (Object.prototype.hasOwnProperty.call(messages, format)) {
         template = messages[format];
         break;
       }

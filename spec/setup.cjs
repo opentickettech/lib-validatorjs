@@ -1,7 +1,9 @@
+var Validator;
+
 if (typeof require !== "undefined") {
-  var Validator = require("../src/validator.cjs");
+  Validator = require("../src/validator.cjs");
 } else {
-  var Validator = window.Validator;
+  Validator = window.Validator;
 }
 
 module.exports = { Validator };

@@ -33,7 +33,7 @@ describe("digits rule", function() {
     expect(validation.errors.first('zip')).to.equal('validation.digits');
     expect(validation.passes()).to.be.false;
 
-    var validation = new Validator({
+    validation = new Validator({
       zip: ' 9098'
     }, {
       zip: 'digits:5'

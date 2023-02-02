@@ -11,7 +11,7 @@ describe("attribute formatter tests", function() {
     const validator = new Validator({ "all_users[3][first_name]": "" }, { "all_users[3][first_name]": "required" });
     expect(validator.fails()).to.be.true;
     expect(validator.errors.first("all_users[3][first_name]")).to.equal(
-        "validation.required"
+      "validation.required"
     );
   });
 
