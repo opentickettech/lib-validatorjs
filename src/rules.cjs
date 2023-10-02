@@ -378,7 +378,7 @@ var rules = {
   },
 
   integer: function (val) {
-    return String(parseInt(val, 10)) === String(val);
+    return rules.numeric(val) && String(parseInt(val, 10)) === String(val);
   },
 
   digits: function (val, req) {
@@ -584,6 +584,10 @@ var rules = {
 
   ip: function (val, req, attribute) {
     return rules['ipv4'](val, req, attribute) || rules['ipv6'](val, req, attribute);
+  },
+
+  nullable: function (val, req, attribute) {
+    return val || val === null;
   }
 
 };
