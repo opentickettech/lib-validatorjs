@@ -18,9 +18,13 @@ module.exports = {
   digits: 'validation.digits',
   digits_between: 'validation.digits_between',
   different: 'validation.different',
+  gt: 'validation.gt',
+  gte: 'validation.gte',
   in: 'validation.in',
   integer: 'validation.integer',
   hex: 'validation.hex',
+  lt: 'validation.lt',
+  lte: 'validation.lte',
   min: {
     numeric: 'validation.min.numeric',
     string: 'validation.min.string'
@@ -30,6 +34,7 @@ module.exports = {
     string: 'validation.max.string'
   },
   not_in: 'validation.not_in',
+  nullable: 'validation.nullable',
   numeric: 'validation.numeric',
   present: 'validation.present',
   required: 'validation.required',
