@@ -587,55 +587,63 @@ var rules = {
   },
 
   nullable: function (val, req, attribute) {
-    return val || val === null;
+    return val !== null && val !== undefined;
   },
 
   gt: function (val, req, attribute) {
-    if (!this.validator._objectPath(this.validator.input, req)) {
+    const requirementValue = this.validator._objectPath(this.validator.input, req);
+
+    if (!requirementValue) {
       return false;
     }
 
-    if (!rules.numeric(val) || !rules.numeric(this.validator.input.req)) {
+    if (!rules.numeric(val) || !rules.numeric(requirementValue)) {
       return false;
     }
 
-    return this.validator.input.req > val;
+    return val > requirementValue;
   },
 
   lt: function (val, req, attribute) {
-    if (!this.validator._objectPath(this.validator.input, req)) {
+    const requirementValue = this.validator._objectPath(this.validator.input, req);
+
+    if (!requirementValue) {
       return false;
     }
 
-    if (!rules.numeric(val) || !rules.numeric(this.validator.input.req)) {
+    if (!rules.numeric(val) || !rules.numeric(requirementValue)) {
       return false;
     }
 
-    return this.validator.input.req < val;
+    return val < requirementValue;
   },
 
   gte: function (val, req, attribute) {
-    if (!this.validator._objectPath(this.validator.input, req)) {
+    const requirementValue = this.validator._objectPath(this.validator.input, req);
+
+    if (!requirementValue) {
       return false;
     }
 
-    if (!rules.numeric(val) || !rules.numeric(this.validator.input.req)) {
+    if (!rules.numeric(val) || !rules.numeric(requirementValue)) {
       return false;
     }
 
-    return this.validator.input.req >= val;
+    return val >= requirementValue;
   },
 
   lte: function (val, req, attribute) {
-    if (!this.validator._objectPath(this.validator.input, req)) {
+    const requirementValue = this.validator._objectPath(this.validator.input, req);
+
+    if (!requirementValue) {
       return false;
     }
 
-    if (!rules.numeric(val) || !rules.numeric(this.validator.input.req)) {
+    if (!rules.numeric(val) || !rules.numeric(requirementValue)) {
       return false;
     }
 
-    return this.validator.input.req <= val;
+    return val <= requirementValue;
   }
 };
 
