@@ -426,6 +426,10 @@ var rules = {
   after: function (val, req) {
     let val1 = req;
 
+    if (val1 === 'now') {
+      val1 = new Date();
+    }
+
     if (!isValidDate(val)) {
       return false;
     }
@@ -443,6 +447,10 @@ var rules = {
 
   after_or_equal: function (val, req) {
     let val1 = req;
+
+    if (val1 === 'now') {
+      val1 = new Date();
+    }
 
     if (!isValidDate(val)) {
       return false;
@@ -462,6 +470,10 @@ var rules = {
   before: function (val, req) {
     let val1 = req;
 
+    if (val1 === 'now') {
+      val1 = new Date();
+    }
+
     if (!isValidDate(val)) {
       return false;
     }
@@ -479,6 +491,10 @@ var rules = {
 
   before_or_equal: function (val, req) {
     let val1 = req;
+
+    if (val1 === 'now') {
+      val1 = new Date();
+    }
 
     if (!isValidDate(val)) {
       return false;
