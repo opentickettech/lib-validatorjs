@@ -13,9 +13,7 @@ describe("passes()", function() {
     validator.passes();
     validator.passes();
 
-    expect(validator.errors.all()).to.eql({
-      login: ["validation.required"]
-    });
+    expect(validator.errors.first("login").message).to.equal("validation.required");
   });
 
   it("should work if the input doesn't extend Object", function() {

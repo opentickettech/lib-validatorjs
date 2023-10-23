@@ -77,7 +77,7 @@ describe("nested validation rules", function() {
       expect(validator.passes()).to.be.false;
       expect(validator.fails()).to.be.true;
       Object.keys(assert[1]).forEach(function(key) {
-        expect(validator.errors.first(key)).to.equal(assert[1][key]);
+        expect(validator.errors.first(key).message).to.equal(assert[1][key]);
       });
     });
   });
@@ -94,7 +94,7 @@ describe("nested validation rules", function() {
       expect(validator.passes()).to.be.false;
       expect(validator.fails()).to.be.true;
       Object.keys(assert[1]).forEach(function(key) {
-        expect(validator.errors.first(key)).to.equal(assert[1][key]);
+        expect(validator.errors.first(key).message).to.equal(assert[1][key]);
       });
     });
   });

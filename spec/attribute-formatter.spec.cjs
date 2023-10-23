@@ -10,7 +10,7 @@ describe("attribute formatter tests", function() {
   it("should replace _[] with spaces by default", function() {
     const validator = new Validator({ "all_users[3][first_name]": "" }, { "all_users[3][first_name]": "required" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("all_users[3][first_name]")).to.equal(
+    expect(validator.errors.first("all_users[3][first_name]").message).to.equal(
       "validation.required"
     );
   });
@@ -22,7 +22,7 @@ describe("attribute formatter tests", function() {
     });
     const validator = new Validator({ first_name: "" }, { first_name: "required" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("first_name")).to.equal("validation.required");
+    expect(validator.errors.first("first_name").message).to.equal("validation.required");
     Validator.setAttributeFormatter(originalAttributeFormatter);
   });
 
@@ -32,6 +32,6 @@ describe("attribute formatter tests", function() {
       return attribute;
     });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("first_name")).to.equal("validation.required");
+    expect(validator.errors.first("first_name").message).to.equal("validation.required");
   });
 });

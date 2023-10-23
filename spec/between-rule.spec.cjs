@@ -66,13 +66,13 @@ describe("between rule", function() {
   it("should generate proper error message for numeric field", function() {
     const validator = new Validator({ num: 14 }, { num: "between:16,23" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("num")).to.equal("validation.between.numeric");
+    expect(validator.errors.first("num").message).to.equal("validation.between.numeric");
   });
 
   it("should generate proper error message for string field (characters)", function() {
     const validator = new Validator({ name: "mike erickson" }, { name: "between:1,4" });
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("name")).to.equal("validation.between.string");
+    expect(validator.errors.first("name").message).to.equal("validation.between.string");
   });
 
   it("should fail when passed invalid values", function() {

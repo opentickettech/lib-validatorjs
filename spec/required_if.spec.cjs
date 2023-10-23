@@ -11,7 +11,7 @@ describe("required if", function() {
     const validator = new Validator({ desert: "icecream", flavour: "" }, { flavour: "required_if:desert,icecream" });
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("flavour")).to.equal("validation.required_if");
+    expect(validator.errors.first("flavour").message).to.equal("validation.required_if");
   });
 
   it("should pass", function() {

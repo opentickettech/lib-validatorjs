@@ -12,7 +12,7 @@ describe("before rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.before");
+    expect(validator.errors.first("date2").message).to.equal("validation.before");
   });
 
   it("should fail when the comparing attribute are equal", function() {
@@ -20,7 +20,7 @@ describe("before rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.before");
+    expect(validator.errors.first("date2").message).to.equal("validation.before");
   });
 
   it("should pass when the comparing attribute are greather", function() {

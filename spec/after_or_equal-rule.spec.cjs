@@ -12,7 +12,7 @@ describe("after or equal rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.after_or_equal");
+    expect(validator.errors.first("date2").message).to.equal("validation.after_or_equal");
   });
 
   it("should pass when the comparing attribute are equal", function() {

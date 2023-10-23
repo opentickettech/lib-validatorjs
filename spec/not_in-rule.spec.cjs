@@ -11,7 +11,7 @@ describe("not_in validation rule", function() {
     const validator = new Validator({ username: "skaterdav85" }, { username: "not_in:skaterdav85,dtang,dtang85" });
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("username")).to.equal("validation.not_in");
+    expect(validator.errors.first("username").message).to.equal("validation.not_in");
   });
 
   it("should pass when the value is not in the set of comma separated values", function() {
@@ -24,7 +24,7 @@ describe("not_in validation rule", function() {
     const validator = new Validator({ id: 1 }, { id: "not_in:0,1,2" });
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("id")).to.equal("validation.not_in");
+    expect(validator.errors.first("id").message).to.equal("validation.not_in");
   });
 
   it("should pass when the value is not in the set of comma separated values", function() {
