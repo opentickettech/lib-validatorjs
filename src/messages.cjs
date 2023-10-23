@@ -73,7 +73,7 @@ Messages.prototype = {
    * Render message
    *
    * @param  {Rule} rule
-   * @return {string}
+   * @return {{ message: string, data: [key:string]: string }}
    */
   render: function(rule) {
     if (rule.customMessage) {
@@ -88,7 +88,14 @@ Messages.prototype = {
       message = this._replacePlaceholders(rule, template, {});
     }
 
-    return message;
+    const data = {};
+    data.attribute = this._getAttributeName(rule.attribute);
+    data[rule.name] = data[rule.name] || rule.getParameters().join(',');
+
+    return {
+      message,
+      data,
+    };
   },
 
   /**

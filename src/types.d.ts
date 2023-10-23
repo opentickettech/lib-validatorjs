@@ -17,8 +17,15 @@ declare namespace Validator {
         [attribute: string]: string | Array<string | TypeCheckingRule> | Rules;
     }
 
+    interface ValidationError {
+        data: {
+            [key: string]: string,
+        },
+        message: string,
+    }
+
     interface ValidationErrors {
-        [field: string]: Array<string>;
+        [field: string]: Array<ValidationError>;
     }
 
     interface ErrorMessages {
