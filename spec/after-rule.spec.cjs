@@ -12,7 +12,7 @@ describe("after rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.after");
+    expect(validator.errors.first("date2").message).to.equal("validation.after");
   });
 
   it("should fail when the comparing attribute are equal", function() {
@@ -20,7 +20,7 @@ describe("after rule", function() {
 
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("date2")).to.equal("validation.after");
+    expect(validator.errors.first("date2").message).to.equal("validation.after");
   });
 
   it("should pass when the comparing attribute are smaller", function() {

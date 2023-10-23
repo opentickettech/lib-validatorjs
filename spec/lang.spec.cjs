@@ -28,7 +28,7 @@ describe("lang / messages", function() {
     const messages = Validator.getMessages("zu");
     expect(messages).to.equal(rawMessages);
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("zip")).to.equal("Le nkundla iyadingeka");
+    expect(validator.errors.first("zip").message).to.equal("Le nkundla iyadingeka");
     Validator.useLang(oldLang);
   });
 });

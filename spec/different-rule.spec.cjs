@@ -49,6 +49,6 @@ describe("different validation rule", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("username")).to.equal("validation.different");
+    expect(validator.errors.first("username").message).to.equal("validation.different");
   });
 });

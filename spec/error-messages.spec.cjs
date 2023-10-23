@@ -11,13 +11,13 @@ describe("Error messages", function() {
     it("should return an error message that states the email is required", function() {
       const validator = new Validator({ email: "" }, { email: "required|email" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("email")).to.equal("validation.required");
+      expect(validator.errors.first("email").message).to.equal("validation.required");
     });
 
     it("should have a method on the errors object to retrieve the first error message for an attribute", function() {
       const validator = new Validator({ email: "" }, { email: "required|email" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("email")).to.equal("validation.required");
+      expect(validator.errors.first("email").message).to.equal("validation.required");
     });
 
     it("should return false if errors.first() is called and there are no errors", function() {
@@ -29,7 +29,7 @@ describe("Error messages", function() {
     it("should return an error message that states the email must be valid", function() {
       const validator = new Validator({ email: "john@yahoo" }, { email: "required|email" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("email")).to.equal("validation.email");
+      expect(validator.errors.first("email").message).to.equal("validation.email");
     });
 
     it("should return null for a key without an error message", function() {
@@ -53,13 +53,13 @@ describe("Error messages", function() {
       );
 
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("age")).to.equal("validation.min.numeric"); // min numeric
-      expect(validator.errors.first("description")).to.equal("validation.min.string"); // min string
-      expect(validator.errors.first("info")).to.equal("validation.required");
-      expect(validator.errors.first("hours")).to.equal("validation.size.numeric"); // size numeric
-      expect(validator.errors.first("pin")).to.equal("validation.size.string"); // size string
-      expect(validator.errors.first("range")).to.equal("validation.max.numeric"); // max numeric
-      expect(validator.errors.first("tweet")).to.equal("validation.max.string"); // max string
+      expect(validator.errors.first("age").message).to.equal("validation.min.numeric"); // min numeric
+      expect(validator.errors.first("description").message).to.equal("validation.min.string"); // min string
+      expect(validator.errors.first("info").message).to.equal("validation.required");
+      expect(validator.errors.first("hours").message).to.equal("validation.size.numeric"); // size numeric
+      expect(validator.errors.first("pin").message).to.equal("validation.size.string"); // size string
+      expect(validator.errors.first("range").message).to.equal("validation.max.numeric"); // max numeric
+      expect(validator.errors.first("tweet").message).to.equal("validation.max.string"); // max string
     });
 
     it("should return a customized alpha error message", function() {
@@ -72,13 +72,13 @@ describe("Error messages", function() {
         }
       );
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("name")).to.equal("validation.alpha");
+      expect(validator.errors.first("name").message).to.equal("validation.alpha");
     });
 
     it("should fail with non alpha dash characters", function() {
       const validator = new Validator({ name: "David *" }, { name: "alpha_dash" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("name")).to.equal(
+      expect(validator.errors.first("name").message).to.equal(
         "validation.alpha_dash"
       );
     });
@@ -86,20 +86,20 @@ describe("Error messages", function() {
     it("should fail without a matching confirmation field for the field under validation", function() {
       const validator = new Validator({ password: "abc" }, { password: "confirmed" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("password")).to.equal("validation.confirmed");
+      expect(validator.errors.first("password").message).to.equal("validation.confirmed");
     });
 
     it("should fail when the 2 attributes are the same", function() {
       const validator = new Validator({ field1: "abc", field2: "abc" }, { field2: "different:field1" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("field2")).to.equal("validation.different");
+      expect(validator.errors.first("field2").message).to.equal("validation.different");
     });
 
     it("should fail with a url only containing http://", function() {
       const link = "http://";
       const validator = new Validator({ link: link }, { link: "url" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("link")).to.equal("validation.url");
+      expect(validator.errors.first("link").message).to.equal("validation.url");
     });
 
     it("should fail the custom telephone rule registration with a default error message", function() {
@@ -109,7 +109,7 @@ describe("Error messages", function() {
 
       const validator = new Validator({ phone: "4213-454-9988" }, { phone: "telephone" });
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("phone")).to.equal("validation.def");
+      expect(validator.errors.first("phone").message).to.equal("validation.def");
     });
 
     it("should fail the custom telephone rule registration with a custom error message", function() {
@@ -130,7 +130,7 @@ describe("Error messages", function() {
         }
       );
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.first("cell")).to.equal("The cell phone number is not in the format XXX-XXX-XXXX.");
+      expect(validator.errors.first("cell").message).to.equal("The cell phone number is not in the format XXX-XXX-XXXX.");
     });
   });
 
@@ -174,13 +174,9 @@ describe("Error messages", function() {
         { name: "required|min:2", email: "required|email", age: "min:18" }
       );
 
-      const expected = JSON.stringify({
-        name: ["validation.min.string"],
-        email: ["validation.required"]
-      });
-
       expect(validation.passes()).to.be.false;
-      expect(JSON.stringify(validation.errors.all())).to.equal(expected);
+      expect(validation.errors.first("name").message).to.equal("validation.min.string");
+      expect(validation.errors.first("email").message).to.equal("validation.required");
     });
   });
 
@@ -202,13 +198,13 @@ describe("Error messages", function() {
     it("should give correct error message with numeric rule", function() {
       const validator = new Validator({ val: "1" }, { val: "numeric|min:2" });
       expect(validator.fails()).to.be.true;
-      expect(validator.errors.first("val")).to.equal("validation.min.numeric");
+      expect(validator.errors.first("val").message).to.equal("validation.min.numeric");
     });
 
     it("should give correct error message with integer rule", function() {
       const validator = new Validator({ val: "1" }, { val: "integer|min:2" });
       expect(validator.fails()).to.be.true;
-      expect(validator.errors.first("val")).to.equal("validation.min.numeric");
+      expect(validator.errors.first("val").message).to.equal("validation.min.numeric");
     });
   });
 });

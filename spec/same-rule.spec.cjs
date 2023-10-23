@@ -19,7 +19,7 @@ describe("same validation rule", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("pw2")).to.equal("validation.same");
+    expect(validator.errors.first("pw2").message).to.equal("validation.same");
   });
 
   it("should fail when the the comparing attribute doesnt exist", function() {
@@ -33,7 +33,7 @@ describe("same validation rule", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("pw2")).to.equal("validation.same");
+    expect(validator.errors.first("pw2").message).to.equal("validation.same");
   });
 
   it("should pass when the 2 attributes are equal", function() {
@@ -82,6 +82,6 @@ describe("same validation rule", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("username")).to.equal("validation.same");
+    expect(validator.errors.first("username").message).to.equal("validation.same");
   });
 });

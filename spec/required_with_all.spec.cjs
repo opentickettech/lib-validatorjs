@@ -20,7 +20,7 @@ describe("required with all", function() {
     );
     expect(validator.fails()).to.be.true;
     expect(validator.passes()).to.be.false;
-    expect(validator.errors.first("flavour")).to.equal(
+    expect(validator.errors.first("flavour").message).to.equal(
       "validation.required_with_all"
     );
   });

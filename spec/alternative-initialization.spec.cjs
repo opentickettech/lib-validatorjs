@@ -30,6 +30,6 @@ describe("alternative initialization using an array instead pipe", function() {
   it("should fail 1 validation rule", function() {
     expect(validator.passes()).to.be.false;
     expect(validator.fails()).to.be.true;
-    expect(validator.errors.first("nick")).to.equal("validation.regex");
+    expect(validator.errors.first("nick").message).to.equal("validation.regex");
   });
 }); // Page constructor

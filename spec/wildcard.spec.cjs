@@ -114,10 +114,8 @@ describe("Wildcard", function() {
       );
       expect(validator.fails()).to.be.true;
       expect(validator.passes()).to.be.false;
-      expect(validator.errors.all()).to.eql({
-        "users.0.age": ["Required"],
-        "users.0.lastName": ["validation.required_with"]
-      });
+      expect(validator.errors.first("users.0.age").message).to.equal("Required");
+      expect(validator.errors.first("users.0.lastName").message).to.equal("validation.required_with");
     });
   });
 });
