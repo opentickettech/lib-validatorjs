@@ -1,7 +1,7 @@
 {
   "name": "@openticket/lib-validatorjs",
   "description": "Validation library inspired by Laravel's Validator",
-  "version": "4.2.2",
+  "version": "5.0.0",
   "author": "OpenTicket <dev@openticket.tech>",
   "contributors": [
     {
