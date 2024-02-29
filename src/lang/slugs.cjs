@@ -18,13 +18,25 @@ module.exports = {
   digits: 'validation.digits',
   digits_between: 'validation.digits_between',
   different: 'validation.different',
-  gt: 'validation.gt',
-  gte: 'validation.gte',
+  gt: {
+    numeric: 'validation.gt.numeric',
+    string: 'validation.gt.string',
+  },
+  gte: {
+    numeric: 'validation.gte.numeric',
+    string: 'validation.gte.string',
+  },
   in: 'validation.in',
   integer: 'validation.integer',
   hex: 'validation.hex',
-  lt: 'validation.lt',
-  lte: 'validation.lte',
+  lt: {
+    numeric: 'validation.lt.numeric',
+    string: 'validation.lt.string',
+  },
+  lte: {
+    numeric: 'validation.lte.numeric',
+    string: 'validation.lte.string',
+  },
   min: {
     numeric: 'validation.min.numeric',
     string: 'validation.min.string'
